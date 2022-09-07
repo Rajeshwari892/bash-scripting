@@ -1,2 +1,3 @@
 #!/bin/bash
-echo "hello world!"
+echo "hello, welcome to devops!"
+echo -e "hi\nhello"
