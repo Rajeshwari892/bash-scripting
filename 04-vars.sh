@@ -3,7 +3,7 @@
 a=10 
 # a is 10 and is integer 
 
-a=abc 
+b=abc 
 # abc is a string  
 
 d=150
