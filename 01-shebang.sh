@@ -1,3 +1,5 @@
 #!/bin/bash
 echo "hello, welcome to devops!"
-echo -e "hi\nhello"
+
+echo hai
+echo hello
