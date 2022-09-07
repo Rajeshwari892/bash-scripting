@@ -15,7 +15,7 @@ LOGGEDIN_USERS=$(who | wc -l)
 
 echo value of a is : $a 
 echo ${a}
-echo "${a}"
+echo "${b}"
 
 echo value of d is : $d 
 
