@@ -3,7 +3,7 @@
 a=10 
 # a is 10 and is integer 
 
-b=abc 
+a=abc 
 # abc is a string  
 
 d=150
@@ -15,7 +15,7 @@ LOGGEDIN_USERS=$(who | wc -l)
 
 echo value of a is : $a 
 echo ${a}
-echo "${b}"
+echo "${a}"
 
 echo value of d is : $d 
 
