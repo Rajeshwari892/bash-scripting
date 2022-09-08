@@ -1,10 +1,10 @@
 #!/bin/bash
 a=$1 #no spaces after "="
 
-if [ "$a" == 1 ] then # space is required after ans before "["
+if [ "$a" == "true" ]; then # space is required after ans before "["
     echo true condition is executed
 
-    elif [ "$a" == 0 ]  then
+    elif [ "$a" == "false" ];  then
     echo false statement is executed
 
     else
