@@ -5,7 +5,7 @@ if ["$a" = "true"]
     then
     echo "true condition is executed"
 
-    elif
+    elif ["$a" = "false"]
     then
     echo "false statement is executed"
 
