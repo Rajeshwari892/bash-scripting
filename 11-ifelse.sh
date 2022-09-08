@@ -34,7 +34,7 @@
 
 ACTION=$1 
 
-if [ -z $ACTION ]; then 
+if [ -z $ACTION ]; then  # -z is not comparing with anything but expecting some value as argument..
     echo "Argument is needed, Either start or stop are valid"
     exit 1
 fi 

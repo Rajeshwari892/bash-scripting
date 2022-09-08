@@ -20,7 +20,7 @@ echo value of a is : $a
 echo value of b is : $b 
 echo value of c is : $c 
 echo value of d is : $d 
-# sh scriptname.sh 100 200 300 
+# sh scriptname.sh 100 200 300  // expects input from user while trying print using bash script sh filename
 # sh scriptname.sh  $1  $2  $3
 
 echo "Printing the vairables that we have passed in the script $*"
