@@ -7,3 +7,4 @@ if [ id -eq 0]; then
     yum install httpd -y
 else
     echo "try executing as a root or sudo"
+fi
