@@ -1,10 +1,10 @@
 #!/bin/bash
 a= $1
 
-if [ "$a" == "true" ]; then
+if [ "$a" == 1 ]; then
     echo true condition is executed
 
-    elif [ "$a" == "false" ];  then
+    elif [ "$a" == 0 ];  then
     echo false statement is executed
 
     else
