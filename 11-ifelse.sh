@@ -1,5 +1,5 @@
 #!/bin/bash
-a= $1
+a=$1
 
 if [ "$a" == 1 ]; then
     echo true condition is executed
