@@ -1,7 +1,7 @@
 
 
 
-case $action
+case $action in
     start)
         ;;
         echo start the srvive
@@ -11,3 +11,5 @@ case $action
     *)
     ;;
         echo option not selected
+
+    esac
