@@ -2,7 +2,7 @@
 
 id=$(id -u)
 
-if [ id -eq 0 ]; then
+if [ $id -eq 0 ]; then
     echo "install httpd"
     yum install httpd -y
 else
