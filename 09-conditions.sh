@@ -1,7 +1,7 @@
 
 
 
-case '$action" in
+case "$action" in
     start)
         echo "start the srvive"
         ;;
