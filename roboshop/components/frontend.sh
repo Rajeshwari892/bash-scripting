@@ -22,11 +22,12 @@ stat $?
 cd /usr/share/nginx/html
 rm -rf *
 
-echo -n "Extract the zip file"
+echo -n "Extract the zip file: "
 unzip /tmp/frontend.zip >> /tmp/frontend.logs
+stat ?
 mv frontend-main/* .
 mv static/* .
-echo -n "performing cleanup"
+echo -n "performing cleanup: "
 rm -rf frontend-main README.md
 stat ?
 
