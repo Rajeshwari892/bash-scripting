@@ -5,7 +5,7 @@ set -e
 source components/common.sh
 
 echo -n "configure yum Repos for nodejs:  "
-curl -sL https://rpm.nodesource.com/setup_lts.x | bash
+curl -sL https://rpm.nodesource.com/setup_lts.x | bash >> /tmp/catalogue.log
 stat $?
 
 echo -n "installing NodeJS: "
@@ -45,7 +45,7 @@ stat $?
 echo -n "Starting the service"
 systemctl daemon-reload  &>> /tmp/catalogue.log 
 systemctl enable catalogue &>> /tmp/catalogue.log
-systemctl start ${COMPONENT} &>> /tmp/cataloguelog
+systemctl start catalogue &>> /tmp/cataloguelog
 stat $?
 
 
