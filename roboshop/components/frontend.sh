@@ -6,7 +6,7 @@ source components/common.sh
 #install nginx
 echo -n "install nginx: " # -n is used to get the commands in next line
 
-yum install nginx -y  >> /tmp/frontend.log
+yum install nginx -y  >> /tmp/frontend.logs
 
 systemctl enable nginx
 echo -n "starting nginx: "

@@ -6,21 +6,22 @@ source components/common.sh
 
 echo -n "configuring the mongodb repos: "
 curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/stans-robot-project/mongodb/main/mongo.repo 
+
 stat $?
 
 echo -n "installing mongodb: "
-yum install -y mongodb-org >> /tmp/mongodb.log
+yum install -y mongodb-org >> /tmp/mongodb.logs
 stat $?
 
 echo -n "starting the service: "
 systemctl enable mongod >> /tmp/mongodb.log
 systemctl start mongod
 
-sed -i -n 's/127.0.0.1/ 0.0.0.0/' /etc/mongod.conf >> /tmp/mongodb.log
+sed -i -n 's/127.0.0.1/ 0.0.0.0/' /etc/mongod.conf >> /tmp/mongodb.logs
 
 echo -n "restarting the service: "
 systemctl restart mongod
-stat ?
+stat $?
 
 echo -n "Downloading the schema and inject it: "
 curl -s -L -o /tmp/mongodb.zip "https://github.com/stans-robot-project/mongodb/archive/main.zip" >> /tmp/mongodb.log
