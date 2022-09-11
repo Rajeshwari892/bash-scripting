@@ -18,14 +18,14 @@ echo -n "Downloading the Code"
 curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/frontend/archive/main.zip"
 stat $?
 
-echo -n "Downloading the Code: "
- cd /usr/share/nginx/html
- rm -rf *
 
- echo -n "Extract the zip file"
- unzip -o /tmp/frontend.zip >> /tmp/frontend.logs
- mv frontend-main/* .
- mv static/* .
+cd /usr/share/nginx/html
+rm -rf *
+
+echo -n "Extract the zip file"
+unzip /tmp/frontend.zip >> /tmp/frontend.logs
+mv frontend-main/* .
+mv static/* .
 echo -n "performing cleanup"
 rm -rf frontend-main README.md
 stat ?
