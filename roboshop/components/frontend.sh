@@ -21,15 +21,23 @@ stat $?
 echo -n "Downloading the Code: "
  cd /usr/share/nginx/html
  rm -rf *
- unzip /tmp/frontend.zip >> /tmp/frontend.logs
+
+ echo -n "Extract the zip file"
+ unzip -o /tmp/frontend.zip >> /tmp/frontend.logs
  mv frontend-main/* .
  mv static/* .
- rm -rf frontend-main README.md
- mv localhost.conf /etc/nginx/default.d/roboshop.conf
+echo -n "performing cleanup"
+rm -rf frontend-main README.md
+stat ?
+
+echo -n "Configuring the Reverse Proxy: "
+mv localhost.conf /etc/nginx/default.d/roboshop.conf
+stat $?
+
 
 echo -n "restarting the service: "
-
- systemctl daemon-reload
- systemctl restart nginx
+systemctl daemon-reload
+systemctl restart nginx
+stat $?
 
 
