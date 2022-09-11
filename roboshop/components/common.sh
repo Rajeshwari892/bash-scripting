@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # validating whether the executing user is root or not
 ID=$(id -u)
 if [ $ID -ne 0 ]; then # $ID we are gatting value as 1 or 2
@@ -9,7 +11,7 @@ fi;
 # if status of cmd is 1 then it is executed properly. $
 
 stat() {
-    if [ $1 -eq 0 ]; then # $1 means expecting the value  from function stat to pass; $? passing from frontend as $?( 0 if success of cmd)
+    if [ $1 -eq 0 ]; then # $1 expects one value; $? passing from frontend as value( 0-if prev cmd executes crctly)
         echo -e "\e[32m success \e[0m"
     else
         echo -e "\e[32m Failure. check for the logs. \e[0m"
