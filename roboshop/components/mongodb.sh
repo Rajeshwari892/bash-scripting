@@ -10,14 +10,14 @@ curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/stans
 stat $?
 
 echo -n "installing mongodb: "
-yum install -y mongodb-org >> /tmp/mongodb.logs
+yum install -y mongodb-org >> /tmp/mongodb.log
 stat $?
 
 echo -n "starting the service: "
 systemctl enable mongod >> /tmp/mongodb.log
 systemctl start mongod
 
-sed -i -n 's/127.0.0.1/ 0.0.0.0/' /etc/mongod.conf >> /tmp/mongodb.logs
+sed -i -n 's/127.0.0.1/ 0.0.0.0/' /etc/mongod.conf >> /tmp/mongodb.log
 
 echo -n "restarting the service: "
 systemctl restart mongod
