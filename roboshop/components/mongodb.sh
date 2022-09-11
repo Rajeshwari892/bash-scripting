@@ -17,7 +17,8 @@ echo -n "starting the service: "
 systemctl enable mongod >> /tmp/mongodb.log
 systemctl start mongod
 
-sed -i -n 's/127.0.0.1/ 0.0.0.0/' /etc/mongod.conf >> /tmp/mongodb.log
+sed -i -e 's/127.0.0.1/ 0.0.0.0/' /etc/mongod.conf
+#sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf 
 
 echo -n "restarting the service: "
 systemctl restart mongod
