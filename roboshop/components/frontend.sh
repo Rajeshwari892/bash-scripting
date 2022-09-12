@@ -33,6 +33,14 @@ echo -n "Configuring the Reverse Proxy: "
 mv localhost.conf /etc/nginx/default.d/roboshop.conf
 stat $?
 
+echo -n "update the proxy file in Nginx with the CATALOGUE, CART, USER server IP Address in the FRONTEND Server: "
+
+for component in catalogue user cart; do
+    sed -i -e "/catalogue/s/localhost/catalogue.roboshop.internal/" /etc/nginx/default.d/roboshop.conf
+    stat $?
+done
+
+
 
 echo -n "restarting the service: "
 systemctl daemon-reload
