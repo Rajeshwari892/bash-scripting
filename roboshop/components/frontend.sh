@@ -3,10 +3,13 @@ set -e # to stop execution of further steps at the point of failure
 
 source components/common.sh
 
+
+
+
 #install nginx
 echo -n "install nginx: " # -n is used to get the commands in next line
 
-yum install nginx -y  >> /tmp/frontend.logs
+yum install nginx -y  >> /tmp/frontend.log
 
 systemctl enable nginx
 echo -n "starting nginx: "
@@ -21,7 +24,7 @@ cd /usr/share/nginx/html
 rm -rf *
 
 echo -n "Extract the zip file: "
-unzip /tmp/frontend.zip >> /tmp/frontend.logs
+unzip /tmp/frontend.zip >> /tmp/frontend.log
 stat $?
 mv frontend-main/* .
 mv static/* .
