@@ -17,15 +17,26 @@ LOGFILE=robot.log
     stat $?
 
 
-    DOWNLOAD_AND_EXTRACT
+    echo -n "Downloading the ${COMPONENT}: "
+    curl -s -L -o /tmp/${COMPONENT}.zip "https://github.com/stans-robot-project/${COMPONENT}/archive/main.zip" >>  /tmp/${COMPONENT}.log
+    stat $?
+
+    echo -n "cleanup of old ${COMPONENT} content: "
+    rm -rf /home/$FUSER/${COMPONENT} >> /tmp/${COMPONENT}.log
+    stat $?
+
+    echo -n "Extracting ${COMPONENT} content: "
+    cd /home/$FUSER >> /tmp/${COMPONENT}.log
+    unzip -o /tmp/${COMPONENT}.zip >> /tmp/${COMPONENT}.log && mv ${COMPONENT}-main ${COMPONENT} >> /tmp/${COMPONENT}.log
+    stat $?
 
     echo -n "mvn clean package.."
     cd ${COMPONENT}
-    mvn clean package 
+    mvn clean package >> /tmp/${COMPONENT}.log
     mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar >> /tmp/${COMPONENT}.log
     stat $?
 
-    echo -n "configuring systemd file with cart and mysql serverip"
+    echo -n "configuring systemd file with cart and mysql serverip: "
     sed -i -e 's/CARTENDPOINT/cart.roboshop.internal/' -e 's/DBHOST/mysql.roboshop.internal/'  /home/${FUSER}/${COMPONENT}/systemd.service
     mv /home/${FUSER}/${COMPONENT}/systemd.service  /etc/systemd/system/${COMPONENT}.service
 
@@ -33,5 +44,4 @@ LOGFILE=robot.log
     systemctl daemon-reload  &>> /tmp/${COMPONENT}.log 
     systemctl enable ${COMPONENT} &>> /tmp/${COMPONENT}.log
     systemctl start ${COMPONENT} &>> /tmp/${COMPONENT}.log
-    stat $? 
     stat $? 
