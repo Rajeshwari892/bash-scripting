@@ -16,7 +16,7 @@ echo -n "adding roboshop user: "
 id roboshop >> /tmp/catalogue.log || useradd roboshop # Creates users only in case if the user account doen's exist
 stat $?
 
-echo -n "Downloading the  catalogue: "
+echo -n "Downloading the catalogue: "
 curl -s -L -o /tmp/catalogue.zip "https://github.com/stans-robot-project/catalogue/archive/main.zip" >>  /tmp/catalogue.log
 stat $?
 
