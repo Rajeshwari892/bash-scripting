@@ -4,27 +4,24 @@ set -e
 
 source components/common.sh
 
-echo -n "configuring the mongodb repos: "
-curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/stans-robot-project/mongodb/main/mongo.repo 
+COMPONENT=mongodb
+
+echo -n "configuring the ${COMPONENT} repos: "
+curl -s -o /etc/yum.repos.d/${COMPONENT}.repo https://raw.githubusercontent.com/stans-robot-project/${COMPONENT}/main/mongo.repo 
 
 stat $?
 
-echo -n "installing mongodb: "
-yum install -y mongodb-org >> /tmp/mongodb.log
-stat $?
-
-echo -n "starting the service: "
-systemctl enable mongod >> /tmp/mongodb.log
-systemctl start mongod
+echo -n "installing ${COMPONENT}: "
+yum install -y mongodb-org >> /tmp/${COMPONENT}.log
 stat $?
 
 
 echo -n "Updating the mongodb Config:"
 sed -i -e 's/127.0.0.1/ 0.0.0.0/' /etc/mongod.conf
-#sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf 
 
-echo -n "restarting the service: "
-systemctl restart mongod
+echo -n "starting the service: "
+systemctl enable mongod >> /tmp/${COMPONENT}.log
+systemctl start mongod
 stat $?
 
 echo -n "Downloading the schema and inject it: "
