@@ -16,7 +16,10 @@ stat $?
 echo -n "starting the service: "
 systemctl enable mongod >> /tmp/mongodb.log
 systemctl start mongod
+stat $?
 
+
+echo -n "Updating the mongodb Config:"
 sed -i -e 's/127.0.0.1/ 0.0.0.0/' /etc/mongod.conf
 #sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf 
 
@@ -25,12 +28,14 @@ systemctl restart mongod
 stat $?
 
 echo -n "Downloading the schema and inject it: "
-curl -s -L -o /tmp/mongodb.zip "https://github.com/stans-robot-project/mongodb/archive/main.zip" >> /tmp/mongodb.log
+curl -s -L -o /tmp/mongodb.zip "https://github.com/stans-robot-project/mongodb/archive/main.zip"
+stat $?
+
+echo -n "Extracting the mongodb Schema:"
 cd /tmp && unzip mongodb.zip >> /tmp/mongodb.log
 stat $?
 
 echo -n "Injecting the mongodb schema: "
-
 cd mongodb-main
 mongo < catalogue.js >> /tmp/mongodb.log
 mongo < users.js >> /tmp/mongodb.log
