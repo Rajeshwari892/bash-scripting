@@ -51,7 +51,7 @@ DOWNLOAD_AND_EXTRACT() {
 
 CONFIG_SVC() {
     echo -n "Configuring the systemd file"
-    sed -i -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' -e 's/CATALOGUE_ENDPOINT/catalogue.roboshop.internal/' -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' -e 's/REDIS_ENDPOINT/redis.roboshop.internal/'  -e 's/MONGO_ENDPOINT/mongodb.roboshop.internal/' /home/${FUSER}/${COMPONENT}/systemd.service 
+    sed -i -e 's/CARTENDPOINT/cart.roboshop.internal/' -e 's/DBHOST/mysql.roboshop.internal/' 's/REDIS_ENDPOINT/redis.roboshop.internal/' -e 's/CATALOGUE_ENDPOINT/catalogue.roboshop.internal/' -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' -e 's/REDIS_ENDPOINT/redis.roboshop.internal/'  -e 's/MONGO_ENDPOINT/mongodb.roboshop.internal/' /home/${FUSER}/${COMPONENT}/systemd.service 
     mv /home/${FUSER}/${COMPONENT}/systemd.service  /etc/systemd/system/${COMPONENT}.service
     stat $? 
 
@@ -84,7 +84,27 @@ NODEJS() {
     
     # Calling Config_SVC Function
     CONFIG_SVC    
+}
 
+MAVEN(){
+    echo -n "installing Maven..this will  aslo install java"
+    yum install maven -y >>  /tmp/${COMPONENT}.log
+    stat $?
+
+    USER_SETUP
+    #roboshop user setup
+
+
+    DOWNLOAD_AND_EXTRACT
+    #downloading and extracting
+
+    echo -n "mvn clean package.."
+    cd /home/$FUSER/${COMPONENT}
+    mvn clean package >> /tmp/${COMPONENT}.log
+    mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar >> /tmp/${COMPONENT}.log
+    stat $?
+
+    CONFIG_SVC
 }
 
 
