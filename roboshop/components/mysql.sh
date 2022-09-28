@@ -19,3 +19,4 @@ echo -n "Starting ${COMPONENT} : "
 systemctl enable mysqld  &>> ${LOGFILE}
 systemctl start mysqld &>> ${LOGFILE}
 stat $? 
+
