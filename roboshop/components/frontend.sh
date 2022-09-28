@@ -3,9 +3,6 @@ set -e # to stop execution of further steps at the point of failure
 
 source components/common.sh
 
-
-
-
 #install nginx
 echo -n "install nginx: " # -n is used to get the commands in next line
 
@@ -38,7 +35,7 @@ stat $?
 
 echo -n "update the proxy file in Nginx with the CATALOGUE, CART, USER server IP Address in the FRONTEND Server: "
 
-for component in catalogue user cart shipping; do
+for component in catalogue user cart shipping payment; do
     sed -i -e "/${component}/s/localhost/${component}.roboshop.internal/"  /etc/nginx/default.d/roboshop.conf
     stat $?
 done
