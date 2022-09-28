@@ -46,6 +46,3 @@ echo -n "restarting the service: "
 systemctl daemon-reload
 systemctl restart nginx
 stat $?
-
-
-echo -n "checking feature-branch"
