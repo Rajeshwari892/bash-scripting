@@ -46,3 +46,4 @@ echo -n "restarting the service: "
 systemctl daemon-reload
 systemctl restart nginx
 stat $?
+
