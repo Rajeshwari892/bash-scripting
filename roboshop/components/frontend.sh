@@ -48,3 +48,4 @@ systemctl restart nginx
 stat $?
 
 
+echo -n "checking feature-branch"
