@@ -13,5 +13,21 @@ This is the repository where we are going to learn bash and would like to automa
 4)  git commig -m "msg Name" :  Adding Msg to the commit / changes that you made .
 5)  git push                 :  Your changes will be pushed to the repo.
 
+
+
 ### PS: Ensure you are inside the repo to executre the git commands  ; We will perform clone once and pull multiple times
 ### tests
+
+Git:
+ working directory-> staging-> local repo-> server( git hub or gitlab)
+
+git branch: to check which branch we are on
+git checkout -b feature/abc-123 ->  remote repo got reated on server taking main as reference
+git add-> staging
+git commit -m " " -> local repo
+git push branchname -> goes to server on main branch default
+git push origin feature/abc-123 -> push to a remote repo.
+raise pull request
+get it reviewed and approved
+Merge the changes to main
+git checkout main-> checkout to main
