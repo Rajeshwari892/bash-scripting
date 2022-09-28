@@ -125,7 +125,7 @@ PYTHON() {
 
 
     echo -n "Updating the $COMPONENT.ini file"
-    sed -i -e "/^uid/ c uid=${USER_ID}" -e "/^gid/ c git=${GROUP_ID}" payment.ini
+    sed -i -e "/^uid/ c uid=${USER_ID}" -e "/^gid/ c gid=${GROUP_ID}" payment.ini
 
     CONFIG_SVC
 
