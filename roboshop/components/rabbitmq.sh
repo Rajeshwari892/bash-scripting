@@ -15,7 +15,7 @@ curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/sc
 yum install rabbitmq-server -y &>> ${LOGFILE}
 stat $?
 
-echo -n "Starting $COMPONENT"
+echo -n "Starting $COMPONENT: "
 
 systemctl enable rabbitmq-server &>> ${LOGFILE}
 systemctl start rabbitmq-server &>> ${LOGFILE}
