@@ -2,7 +2,7 @@
 
 #AMI_ID="ami-0d2238d1970144264" 
 
-if [ z  "$1" ]; then # $1 expects the value, 
+if [ -z  "$1" ] ; then # $1 expects the value,  if $1 value is not supplied, mark it as failure
     echo -e "\e[32m Machine name  is Missing \e[0m"
     exit 1
 fi
@@ -13,4 +13,4 @@ AMI_ID=$(aws ec2 describe-images  --filters "Name=name,Values=DevOps-LabImage-Ce
 SGID="sg-0092586f6f714fc1b"  
 echo "ami id id which we are using is $AMI_ID"
 
-aws ec2 run-instances --image-id {$AMI_ID} --count 1 --instance-type t2.micro --security-group-ids sg-0092586f6f714fc1b --tag-specifications "ResourceType=instance,Tags=[{Key=webserver,Value=production}]" 
+aws ec2 run-instances --image-id {$AMI_ID} --count 1 --instance-type t2.micro --security-group-ids ${SGID} --tag-specifications "ResourceType=instance,Tags=[{Key=webserver,Value=production}]" 
