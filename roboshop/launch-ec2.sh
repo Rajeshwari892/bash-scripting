@@ -7,7 +7,7 @@ if [ -z  "$1" ] ; then # $1 expects the value,  if $1 value is not supplied, mar
     exit 1
 fi
 
-COMPNENT=$1 #after sudo bash launch-ec2 value($1= frontendor user or catalogue), z expects value; empty throws error
+COMPONENT=$1 #after sudo bash launch-ec2 value($1= frontendor user or catalogue), z expects value; empty throws error
 
 AMI_ID=$(aws ec2 describe-images  --filters "Name=name,Values=DevOps-LabImage-CentOS7" |  jq '.Images[].ImageId'| sed -e 's/"//g')
 SGID="sg-0092586f6f714fc1b"  
