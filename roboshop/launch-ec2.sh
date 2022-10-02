@@ -6,5 +6,5 @@
 
 
 AMI_ID=$(aws ec2 describe-images --filterS "Name=name,Values=DevOps-LabImage-CentOS7" | jq '.Images[].ImagesId' | sed -e 's/"//g')
-echo -n "ami-id id which we are using is: " $AMI_ID
+echo "ami-id id which we are using is: " $AMI_ID
 
