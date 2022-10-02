@@ -13,4 +13,5 @@ AMI_ID=$(aws ec2 describe-images  --filters "Name=name,Values=DevOps-LabImage-Ce
 SGID="sg-0092586f6f714fc1b"  
 echo "ami id id which we are using is $AMI_ID"
 
-aws ec2 run-instances --image-id {$AMI_ID} --instance-type t2.micro --security-group-ids ${SGID} --tag-specifications "ResourceType=instance,Tags=[{Key=webserver,Value=production}]" 
+aws ec2 run-instances --image-id ${AMI_ID} --instance-type t2.micro  --security-group-ids ${SGID}  --tag-specifications "ResourceType=instance,Tags=[{Key=webserver,Value=production}]"
+ 
