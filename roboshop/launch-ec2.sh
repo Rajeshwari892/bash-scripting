@@ -10,7 +10,7 @@ fi
 COMPONENT=$1 #after sudo bash launch-ec2 value($1= frontend or user or catalogue)
 ENV=$2
 
-ZONEID="Z025435221B0U2ES6A056"
+ZONEID="Z0886787287FCWEAXMAVA" 
 AMI_ID=$(aws ec2 describe-images  --filters "Name=name,Values=DevOps-LabImage-CentOS7"  | jq '.Images[].ImageId'| sed -e 's/"//g')
 SGID="sg-0092586f6f714fc1b"  
 echo "ami id id which we are using is $AMI_ID"
