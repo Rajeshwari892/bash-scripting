@@ -74,7 +74,7 @@ NODEJS() {
    # stat $?
 
     echo -n "Installing nodejs:"
-    yum install nodejs -y >> /tmp/${COMPONENT}.log 
+    yum install nodejs -y &>> /tmp/${COMPONENT}.log 
     stat $?
 
     # Calling User creation function
