@@ -21,7 +21,7 @@ cd /usr/share/nginx/html
 rm -rf *
 
 echo -n "Extract the zip file: "
-unzip /tmp/frontend.zip >> /tmp/frontend.log
+unzip -o /tmp/frontend.zip >> /tmp/frontend.log
 stat $?
 mv frontend-main/* .
 mv static/* .
@@ -39,7 +39,6 @@ for component in catalogue user cart shipping payment; do
     sed -i -e "/${component}/s/localhost/${component}.roboshop.internal/"  /etc/nginx/default.d/roboshop.conf
     stat $?
 done
-
 
 
 echo -n "restarting the service: "
