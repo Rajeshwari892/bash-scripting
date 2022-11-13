@@ -1,6 +1,3 @@
-
-set -e # to stop execution of further steps at the point of failure 
-
 source components/common.sh
 
 #install nginx
@@ -39,7 +36,6 @@ for component in catalogue user cart shipping payment; do
     sed -i -e "/${component}/s/localhost/${component}-${ENV}.roboshop.internal/"  /etc/nginx/default.d/roboshop.conf
     stat $?
 done
-
 
 echo -n "restarting the service: "
 systemctl daemon-reload
