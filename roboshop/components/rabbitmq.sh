@@ -12,7 +12,9 @@ yum install https://github.com/rabbitmq/erlang-rpm/releases/download/v23.2.6/erl
 stat $?
 
 echo -n "configuring and installing the $COMPONENT repo"
-curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | sudo bash &>> ${LOGFILE} 
+# curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | sudo bash &>> ${LOGFILE}
+curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | sudo bash &>> ${LOGFILE}
+curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | sudo bash &>> ${LOGFILE}
 yum install rabbitmq-server -y &>> ${LOGFILE}
 stat $?
 
