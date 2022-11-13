@@ -1,9 +1,12 @@
+#!/bin/bash
+set -e   # ensure your script will stop if any of the instruction fails
+
 source components/common.sh
 
 #install nginx
 echo -n "install nginx: " # -n is used to get the commands in next line
 
-yum install nginx -y  >> /tmp/frontend.log
+yum install nginx -y  &>> /tmp/frontend.log
 
 systemctl enable nginx
 echo -n "starting nginx: "
