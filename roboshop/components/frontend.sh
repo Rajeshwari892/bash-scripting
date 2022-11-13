@@ -35,8 +35,8 @@ stat $?
 
 echo -n "update the proxy file in Nginx with the CATALOGUE, CART, USER server IP Address in the FRONTEND Server: "
 
-for component in catalogue user cart shipping payment; do
-    sed -i -e "/${component}/s/localhost/${component-ENV}.roboshop.internal/"  /etc/nginx/default.d/roboshop.conf
+for component in catalogue-dev user-dev cart-dev shipping-dev payment-dev; do
+    sed -i -e "/${component}/s/localhost/${component}.roboshop.internal/"  /etc/nginx/default.d/roboshop.conf
     stat $?
 done
 
