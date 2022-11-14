@@ -35,13 +35,15 @@ stat $?
 
 echo -n "update the proxy file in Nginx with the CATALOGUE, CART, USER server IP Address in the FRONTEND Server: "
 
-for component in catalogue-dev user-dev cart-dev shipping-dev payment-dev; do
+for component in catalogue user cart shipping payment; do
     sed -i -e "/${component}/s/localhost/${component}.roboshop.internal/"  /etc/nginx/default.d/roboshop.conf
     stat $?
 done
 
-echo -n "restarting the service: "
-systemctl daemon-reload
-systemctl restart nginx
+echo -n "Starting Frontend Service:"
+systemctl enable nginx &>> $LOGFILE
+systemctl daemon-reload &>> $LOGFILE
+systemctl restart nginx &>> $LOGFILE
 stat $?
+
 

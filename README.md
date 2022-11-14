@@ -16,7 +16,7 @@ This is the repository where we are going to learn bash and would like to automa
 ### PS: Ensure you are inside the repo to executre the git commands  ; We will perform clone once and pull multiple times
 ### tests
 
-sudo bash launch-ec2.sh frontend : dont forget to add iam role to the instance security settings inorder not to throw error. To perform as a root,
+sudo bash launch-ec2.sh frontend dev # dont forget to add iam role to the instance security settings inorder not to throw error. To perform as a root,
 need Iam role to configued
 sudo bash launch-ec2.sh all dev
 ssh frontend-dev.roboshop.internal
